@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+<head>
+<meta charset="ISO-8859-1">
+<title>Customer Register Page</title>
+</head>
+<body>
+<h2>Welcome to Customer <span th:if="${MODE=='EDIT'}">Update</span><span th:unless="${MODE=='EDIT'}">Register</span> Page</h2>
+<hr/>
+<div th:if="${MODE=='EDIT'}">
+<form action="#" method="POST" th:action="@{/customer/update}" th:object="${customer}">
+
+<pre>
+ID	:<input type="text" th:field="*{custId}" readonly="readonly"/>
+CODE	: <input type="text" th:field="*{custCode}"/>
+NAME	: <input type="text" th:field="*{custName}"/>
+TYPE	: <select th:field="*{custType}">
+			<option value="REG">REG</option>
+			<option value="CUST">CUST</option>
+			<option value="GUEST">GUEST</option>
+		  </select>
+NOTE	: <textarea th:field="*{note}"></textarea>
+		<input type="submit" value="Update"/>
+
+</pre>
+</form>
+</div>
+<div th:unless="${MODE=='EDIT'}">
+<form action="#" method="POST" th:action="@{/customer/save}" th:object="${customer}">
+<pre>
+
+CODE	: <input type="text" th:field="*{custCode}"/>
+NAME	: <input type="text" th:field="*{custName}"/>
+TYPE	: <select th:field="*{custType}">
+			<option value="REG">REG</option>
+			<option value="CUST">CUST</option>
+			<option value="GUEST">GUEST</option>
+		  </select>
+NOTE	: <textarea th:field="*{note}"></textarea>
+		<input type="submit" value="Create"/>
+
+</pre>
+</form>
+</div>
+
+
+
+<span th:text="${message}"></span>
+
+</body>
+</html>

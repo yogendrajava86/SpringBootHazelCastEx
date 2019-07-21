@@ -76,10 +76,10 @@ public class CustomerController {
 	@RequestMapping(value="/update",method=RequestMethod.POST)
 		public String saveUpdateData(@ModelAttribute Customer customer, Model map) {
 		Integer id=customer.getCustId();
-		Integer custId=service.updateCustomer(customer,id);
+		Customer cus=service.updateCustomer(customer,id);
 			
 			map.addAttribute("customer",new Customer());
-			map.addAttribute("message","Customer '"+custId+"' Updated!!");
+			map.addAttribute("message","Customer '"+cus.getCustId()+"' Updated!!");
 			return "redirect:all";
 		}
 	

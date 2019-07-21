@@ -16,11 +16,11 @@ public class HazelCacheConfig {
 				.addMapConfig(
 						new MapConfig()
 						.setName("customer-cache")
+						
 						.setTimeToLiveSeconds(2000)
-						.setEvictionPolicy(EvictionPolicy.LRU)						
-						.setMaxSizeConfig(
-								new MaxSizeConfig().setSize(200)								
-								)
+						.setEvictionPolicy(EvictionPolicy.LRU)	
+						.setMaxSizeConfig(new MaxSizeConfig(300,MaxSizeConfig.MaxSizePolicy.FREE_HEAP_SIZE))
+						
 						);
 	}
 }

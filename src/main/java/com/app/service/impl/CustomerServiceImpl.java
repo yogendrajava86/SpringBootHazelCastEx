@@ -45,16 +45,16 @@ public class CustomerServiceImpl implements ICustomerService {
 
 	@Override
 	@Transactional
-	@CacheEvict(value="customer-cache",key="#custId")
+	@CacheEvict(value="customer-cache")
 	public void deleteCustomer(Integer custId) {
 		repo.deleteById(custId);
 	}
 
 	@Override
 	@Transactional
-	//@CachePut(value="customer-cache",key="#custId")
-	public Integer updateCustomer(Customer c,Integer custId) {
-		return repo.save(c).getCustId();
+	@CachePut(value="customer-cache",key="#custId")
+	public Customer updateCustomer(Customer c,Integer custId) {
+		return repo.save(c);
 	}
 
 }

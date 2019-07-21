@@ -10,6 +10,6 @@ public interface ICustomerService {
 	public Customer getOneCustomer(Integer custId);
 	public List<Customer> getAllCustomers();
 	public void deleteCustomer(Integer custId);
-	public Integer updateCustomer(Customer c,Integer custId);
+	public Customer updateCustomer(Customer c,Integer custId);
 	
 }
